@@ -5,15 +5,15 @@ import userModel from "../models/userModel.js";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
 import { v2 as cloudinary } from 'cloudinary'
-import stripe from "stripe";
-import razorpay from 'razorpay';
+//import stripe from "stripe";
+//import razorpay from 'razorpay';
 
 // Gateway Initialize
-const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
+/*const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
 const razorpayInstance = new razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
-})
+})*/
 
 // API to register user
 const registerUser = async (req, res) => {
@@ -236,7 +236,7 @@ const listAppointment = async (req, res) => {
 }
 
 // API to make payment of appointment using razorpay
-const paymentRazorpay = async (req, res) => {
+/*const paymentRazorpay = async (req, res) => {
     try {
 
         const { appointmentId } = req.body
@@ -262,10 +262,10 @@ const paymentRazorpay = async (req, res) => {
         console.log(error)
         res.json({ success: false, message: error.message })
     }
-}
+}*/
 
 // API to verify payment of razorpay
-const verifyRazorpay = async (req, res) => {
+/*const verifyRazorpay = async (req, res) => {
     try {
         const { razorpay_order_id } = req.body
         const orderInfo = await razorpayInstance.orders.fetch(razorpay_order_id)
@@ -281,10 +281,10 @@ const verifyRazorpay = async (req, res) => {
         console.log(error)
         res.json({ success: false, message: error.message })
     }
-}
+}*/
 
 // API to make payment of appointment using Stripe
-const paymentStripe = async (req, res) => {
+/*const paymentStripe = async (req, res) => {
     try {
 
         const { appointmentId } = req.body
@@ -322,9 +322,9 @@ const paymentStripe = async (req, res) => {
         console.log(error)
         res.json({ success: false, message: error.message })
     }
-}
+}*/
 
-const verifyStripe = async (req, res) => {
+/*const verifyStripe = async (req, res) => {
     try {
 
         const { appointmentId, success } = req.body
@@ -341,7 +341,7 @@ const verifyStripe = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 
-}
+}*/
 
 export {
     loginUser,
@@ -351,8 +351,8 @@ export {
     bookAppointment,
     listAppointment,
     cancelAppointment,
-    paymentRazorpay,
+    /*paymentRazorpay,
     verifyRazorpay,
     paymentStripe,
-    verifyStripe
+    verifyStripe*/
 }
